@@ -5,31 +5,25 @@ public class PrimeFactorization {
     public static void main(String[] args) {
         Scanner in = new Scanner(System.in);
         PrimeFactorization o = new PrimeFactorization();
-        int n;
         System.out.println("Enter Number: ");
-        n = in.nextInt();
-        System.out.print("The Prime Factors of " + n + " are: ");
-        o.primefac(n);
+        int i = in.nextInt();
+        System.out.print("The Prime Factors Are: ");
+        o.check(i);
     }
 
-    public boolean isPrime(int n) {
-        if (n <= 1) {
-            return false;
-        }
-        for (int i = 2; i <= Math.sqrt(n); i++) {
-            if (n % i == 0) {
-                return false;
-            }
+    boolean isPrime(int i) {
+        if (i <= 1) return false;
+        for (int k = 2; k * k <= i; k++) {
+            if (i % k == 0) return false;
         }
         return true;
     }
 
-    public void primefac(int n) {
-        for (int i = 2; i <= n; i++) {
-            if (isPrime(i) && n % i == 0) {
+    void check(int x) {
+        for (int i = 2; i <= x; i++) {
+            while (x % i == 0 && isPrime(i)) {
                 System.out.print(i + " ");
-                n /= i;
-                i--;
+                x /= i;
             }
         }
     }
